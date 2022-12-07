@@ -1,2 +1,7 @@
-# 60001_MIT_psets_01
-Psets Solutions to MIT 6001 Introduction to Python Course
+# 6.0001 Introduction To Computer Science And Programming In Python
+
+My solutions to the problem sets from the MIT course
+
+The assignments can be downloaded from the 
+[MIT OpenCourseWare](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/pages/assignments/)
+website.
