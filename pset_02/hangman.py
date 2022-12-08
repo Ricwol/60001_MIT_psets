@@ -120,6 +120,40 @@ def get_guess():
     return guess if guess.isalpha() else ""
 
 
+def update_stats(guesses, warnings):
+    """
+    Subtract one warnings and return updated values.
+
+    As long as there are warnings left, subtract one warnings, subtract one
+    guesses otherwise
+
+    Parameters
+    ----------
+    guesses : int
+        number of tries left.
+    warnings : int
+        number of warnings left.
+
+    Returns
+    -------
+    int
+        updated guesses value >= 0.
+    int
+        updated warnings value >= -1.
+
+    """
+    # IF player has warnings left
+    if warnings > 0:
+        # THEN reduce warnings by 1
+        warnings -= 1
+        warn_resp = f"You have {warnings} warnings left:"
+    # ELSE IF no warnings left
+    else:
+        # THEN reduce guesses by 1
+        guesses -= 1
+    return guesses, warnings, warn_resp
+
+
 def check_guess(guess, secret_word, letters_guessed, guesses, warnings):
     """
     Check if guess is in secret_word and return updated guesses and warnings.
@@ -154,27 +188,11 @@ def check_guess(guess, secret_word, letters_guessed, guesses, warnings):
     response = "Good guess:"
     # IF guess is invalid
     if guess == "":
-        # THEN reduce warnings by 1
-        if warnings > 0:
-            warnings -= 1
-            warn_resp = f"You have {warnings} warnings left:"
-        # ELSE IF no warnings left
-        else:
-            # THEN reduce guesses by 1
-            guesses -= 1
-            warn_resp = "You have no warnings left so you lose one guess:"
+        guesses, warnings, warn_resp = update_stats(guesses, warnings)
         response = f"Oops! That is not a valid letter. {warn_resp}"
     # ELSE IF guess was already used
     elif guess in letters_guessed:
-        # THEN reduce warnings by 1
-        if warnings > 0:
-            warnings -= 1
-            warn_resp = f"You have {warnings} warnings left:"
-        # ELSE IF no warnings left
-        else:
-            # THEN reduce guesses by 1
-            guesses -= 1
-            warn_resp = "You have no warnings left so you lose one guess:"
+        guesses, warnings, warn_resp = update_stats(guesses, warnings)
         response = f"Oops! You've already guessed that letter. {warn_resp}"
     # ELSE IF guess is valid but not in secret_word
     elif guess not in secret_word:
