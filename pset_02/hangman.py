@@ -216,6 +216,31 @@ def check_guess(guess, secret_word, letters_guessed, guesses, warnings):
     return guesses, warnings
 
 
+def print_end_screen(secret_word, guesses):
+    """
+       Prints end screen after game is over.
+
+       If game is won, print total score, else print the secret_word.
+    """
+    # IF game was won
+    if guesses > 0:
+        # Remove duplicates by casting secret_word to set
+        unique_letter = set(secret_word)
+        # Calculate total score
+        # based on unique letters in secret_word and guesses left
+        total_score = guesses * len(unique_letter)
+
+        # THEN print total score
+        print("Congratulations, you won!")
+        print(f"Your total score for this game is: {total_score}")
+    # ELSE print secret_word
+    else:
+        print(f"Sorry, you ran out of guesses. The word was {secret_word}.")
+
+
+# END of my helper functions
+# -----------------------------------
+
 def hangman(secret_word):
     '''
     secret_word: string, the secret word to guess.
@@ -269,20 +294,7 @@ def hangman(secret_word):
         print("-------------")
 
     # PRINT End screen
-    # IF game was won
-    if guesses > 0:
-        # Remove duplicates by casting secret_word to set
-        unique_letter = set(secret_word)
-        # Calculate total score
-        # based on unique letters in secret_word and guesses left
-        total_score = guesses * len(unique_letter)
-
-        # THEN print total score
-        print("Congratulations, you won!")
-        print(f"Your total score for this game is: {total_score}")
-    # ELSE print secret_word
-    else:
-        print(f"Sorry, you ran out of guesses. The word was {secret_word}.")
+    print_end_screen(secret_word, guesses)
 
 
 # When you've completed your hangman function, scroll down to the bottom
@@ -394,20 +406,7 @@ def hangman_with_hints(secret_word):
         break
 
     # PRINT End screen
-    # IF game was won
-    if guesses > 0:
-        # Remove duplicates by casting secret_word to set
-        unique_letter = set(secret_word)
-        # Calculate total score
-        # based on unique letters in secret_word and guesses left
-        total_score = guesses * len(unique_letter)
-
-        # THEN print total score
-        print("Congratulations, you won!")
-        print(f"Your total score for this game is: {total_score}")
-    # ELSE print secret_word
-    else:
-        print(f"Sorry, you ran out of guesses. The word was {secret_word}.")
+    print_end_screen(secret_word, guesses)
 
 
 # When you've completed your hangman_with_hint function, comment the two similar
