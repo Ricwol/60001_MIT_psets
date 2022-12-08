@@ -73,8 +73,14 @@ def get_guessed_word(secret_word, letters_guessed):
     returns: string, comprised of letters, underscores (_), and spaces that represents
       which letters in secret_word have been guessed so far.
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    guessed_word = ""
+    for letter in secret_word:
+        if letter in letters_guessed:
+            guessed_word += letter
+        else:
+            # Current letter not guessed yet -> set to blank '_ '
+            guessed_word += "_ "
+    return guessed_word
 
 
 
