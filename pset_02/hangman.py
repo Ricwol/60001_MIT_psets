@@ -375,9 +375,14 @@ def show_possible_matches(my_word):
              that has already been revealed.
 
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
-
+    # Add word from wordlist if match_with_gaps returns True using
+    matches = [word for word in wordlist if match_with_gaps(my_word, word)]
+    # Falsy if matches is empty, truthy otherwise
+    if matches:
+        # Use * for unpacking an iterable
+        print(*matches)
+    else:
+        print("No matches found")
 
 
 def hangman_with_hints(secret_word):
