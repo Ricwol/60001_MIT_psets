@@ -338,14 +338,31 @@ def match_with_gaps(my_word, other_word):
     '''
     my_word: string with _ characters, current guess of secret word
     other_word: string, regular English word
-    returns: boolean, True if all the actual letters of my_word match the 
+    returns: boolean, True if all the actual letters of my_word match the
         corresponding letters of other_word, or the letter is the special symbol
         _ , and my_word and other_word are of the same length;
-        False otherwise: 
+        False otherwise:
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    # Remove blank space by replacing it with empty string
+    my_word = my_word.replace(" ", "")
 
+    # Check if words are of same length
+    if len(my_word) != len(other_word):
+        return False
+
+    for i, letter in enumerate(my_word):
+        # IF letter is an underscore
+        if letter == "_":
+            # THEN check if the ith letter in other_word is found in my_word
+            # IF ith letter in other_word is in my_word
+            if other_word[i] in my_word:
+                # THEN other_word can't form my_word as an unknown letter can't
+                # appear at another position in my_word, therefore return False
+                return False
+        # Return False if letters don't match at ith position
+        elif letter != other_word[i]:
+            return False
+    return True
 
 
 def show_possible_matches(my_word):
