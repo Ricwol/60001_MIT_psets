@@ -95,7 +95,30 @@ def get_available_letters(letters_guessed):
         if letter not in letters_guessed:
             available_letters += letter
     return available_letters
-    
+
+
+# -----------------------------------
+# My helper functions
+
+def get_guess():
+    """
+    Collects and returns valid user input, empty string ("") otherwise.
+
+    Valid user input is a lowercase alphabet letter. All non-alphabet
+    characters are invalid user input.
+
+    Returns
+    -------
+    str
+        single lowercase alphabet letter, if input is valid, empty string
+        otherwise.
+
+    """
+    guess = input("Please guess a letter: ")
+    guess = guess.lower()
+
+    return guess if guess.isalpha() else ""
+
 
 def hangman(secret_word):
     '''
@@ -142,6 +165,7 @@ def hangman(secret_word):
         print(f"Available Letters: {get_available_letters(letters_guessed)}")
 
         # GET input from user; assume that only one letter is entered
+        guess = get_guess()
         # IF guess is invalid
             # THEN reduce warnings by 1
                 # IF no warnings left
