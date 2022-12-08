@@ -123,13 +123,23 @@ def hangman(secret_word):
     Follows the other limitations detailed in the problem write-up.
     '''
     # Initialize guesses=6, warnings=3 and letters_guessed to an empty list
+    guesses = 6
+    warnings = 3
+    letters_guessed = []
 
     # PRINT Start screen to welcome the player
+    print("Welcome to the game Hangman!")
     # PRINT length of the secret word and how many warnings player starts with
+    print(f"I am thinking of a word that is {len(secret_word)} letters long.")
+    print(f"You have {warnings} warnings left")
+    print("-------------")
 
     # WHILE player has guesses left and not has guessed the word correclty
+    while guesses > 0 and not is_word_guessed(secret_word, letters_guessed):
         # PRINT how many guesses are left
+        print(f"You have {guesses} guesses left")
         # PRINT which letters are still available
+        print(f"Available Letters: {get_available_letters(letters_guessed)}")
 
         # GET input from user; assume that only one letter is entered
         # IF guess is invalid
@@ -147,6 +157,7 @@ def hangman(secret_word):
                 # THEN reduce guesses by 1
         # ELSE guess is in secret_word
             # THEN add guess to letters_guessed
+        print("-------------")
 
     # PRINT End screen
     # IF game was won
