@@ -351,15 +351,28 @@ def hangman_with_hints(secret_word):
     Follows the other limitations detailed in the problem write-up.
     '''
     # Initialize guesses=6, warnings=3 and letters_guessed to an empty list
+    # Initialize guesses=6, warnings=3 and letters_guessed to an empty list
+    guesses = 6
+    warnings = 3
+    letters_guessed = []
 
     # PRINT Start screen to welcome the player
+    print("Welcome to the game Hangman!")
     # PRINT length of the secret word and how many warnings player starts with
+    print(f"I am thinking of a word that is {len(secret_word)} letters long.")
+    print(f"You have {warnings} warnings left")
+    print("-------------")
 
     # WHILE player has guesses left and not has guessed the word correclty
+    while guesses > 0 and not is_word_guessed(secret_word, letters_guessed):
         # PRINT how many guesses are left
+        print(f"You have {guesses} guesses left")
         # PRINT which letters are still available
+        print(f"Available Letters: {get_available_letters(letters_guessed)}")
 
         # GET input from user; assume that only one letter is entered
+        guess = get_guess()
+
         # IF guess is invalid
             # THEN reduce warnings by 1
             # IF no warnings left
@@ -377,13 +390,24 @@ def hangman_with_hints(secret_word):
                 # THEN reduce guesses by 1
         # ELSE guess is in secret_word
             # THEN add guess to letters_guessed
+        print("-------------")
+        break
 
     # PRINT End screen
     # IF game was won
-        # THEN print total score
-    # ELSE print secret_word
-    pass
+    if guesses > 0:
+        # Remove duplicates by casting secret_word to set
+        unique_letter = set(secret_word)
+        # Calculate total score
+        # based on unique letters in secret_word and guesses left
+        total_score = guesses * len(unique_letter)
 
+        # THEN print total score
+        print("Congratulations, you won!")
+        print(f"Your total score for this game is: {total_score}")
+    # ELSE print secret_word
+    else:
+        print(f"Sorry, you ran out of guesses. The word was {secret_word}.")
 
 
 # When you've completed your hangman_with_hint function, comment the two similar
