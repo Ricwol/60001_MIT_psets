@@ -249,6 +249,27 @@ def print_end_screen(secret_word, guesses):
         print(f"Sorry, you ran out of guesses. The word was {secret_word}.")
 
 
+def get_guess_with_hints():
+    """
+    Collects and returns valid user input, empty string ("") otherwise.
+
+    Valid user input is a lowercase alphabet letter. All non-alphabet
+    characters are invalid user input.
+
+    Returns
+    -------
+    str
+        single lowercase alphabet letter, if input is valid, empty string
+        otherwise.
+
+    """
+    # Collect user input. Assume user enters only one character at a time
+    guess = input("Please guess a letter: ")
+    guess = guess.lower()
+
+    return guess if guess.isalpha() or guess == "*" else ""
+
+
 # END of my helper functions
 # -----------------------------------
 
@@ -386,7 +407,7 @@ def hangman_with_hints(secret_word):
         print(f"Available Letters: {get_available_letters(letters_guessed)}")
 
         # GET input from user; assume that only one letter is entered
-        guess = get_guess()
+        guess = get_guess_with_hints()
 
         # IF guess is invalid
             # THEN reduce warnings by 1
