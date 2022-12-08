@@ -212,7 +212,7 @@ def check_guess(guess, secret_word, letters_guessed, guesses, warnings):
         letters_guessed.append(guess)
 
     # Print current status of guessed secret_word
-    print(response + " " + get_guessed_word(secret_word, letters_guessed))
+    print(response, get_guessed_word(secret_word, letters_guessed))
     return guesses, warnings
 
 
@@ -268,6 +268,77 @@ def get_guess_with_hints():
     guess = guess.lower()
 
     return guess if guess.isalpha() or guess == "*" else ""
+
+
+def check_guess_with_hints(guess, secret_word, letters_guessed, guesses,
+                           warnings):
+    """
+    Check if guess is in secret_word and return updated guesses and warnings.
+
+    If user enters a valid character that is not in secret_word, subtract one
+    guess if character is a consonant, two if a vowel.
+    Invalid guesses or previously asked guesses result in subtracting one from
+    warnings. If no warnings left, player loses one try, i.e. subtract one
+    from guesses.
+
+    Parameters
+    ----------
+    guess : str
+        empty string or one lowercase alphabet character.
+    secret_word : str
+        lowercase secret word.
+    letters_guessed : list
+        list of all valid guesses user already tried.
+    guesses : int
+        a positive number of guesses left.
+    warnings : int
+        number of warnings left.
+
+    Returns
+    -------
+    guesses : int
+        updated number of guesses according to user input.
+    warnings : int
+        updated number of guesses according to user input.
+
+    """
+    need_hint = False
+    response = "Good guess:"
+    # IF guess is invalid
+    if guess == "":
+        guesses, warnings, warn_resp = update_stats(guesses, warnings)
+        response = "Oops! That is not a valid letter. " + warn_resp
+    # ELSE IF guess was already used
+    elif guess in letters_guessed:
+        # Decrement warnings by one as long as warnings > 0, guesses otherwise
+        guesses, warnings, warn_resp = update_stats(guesses, warnings)
+        response = "Oops! You've already guessed that letter. " + warn_resp
+    # ELSE IF guess is wildcard character "*"
+    elif guess == "*":
+        # THEN display all possible matches
+        my_word = get_guessed_word(secret_word, letters_guessed)
+        show_possible_matches(my_word)
+        need_hint = True
+    # ELSE IF guess is valid but not in secret_word
+    elif guess not in secret_word:
+        # IF guess is a vowel
+        if guess in "aeiou":
+            # THEN reduce guesses by 2
+            guesses -= 1
+        # guess is a consonant; reduce guesses by 1
+        guesses -= 1
+        # Append false guess to list of all used letters
+        letters_guessed.append(guess)
+        response = "Oops! That letter is not in my word:"
+    # ELSE guess is in secret_word
+    else:
+        # THEN add guess to letters_guessed
+        letters_guessed.append(guess)
+
+    if not need_hint:
+        # Print current status of guessed secret_word
+        print(response, get_guessed_word(secret_word, letters_guessed))
+    return guesses, warnings
 
 
 # END of my helper functions
@@ -431,25 +502,10 @@ def hangman_with_hints(secret_word):
         # GET input from user; assume that only one letter is entered
         guess = get_guess_with_hints()
 
-        # IF guess is invalid
-            # THEN reduce warnings by 1
-            # IF no warnings left
-                # THEN reduce guesses by 1
-        # ELSE IF guess is "*"
-            # THEN print out all words in wordlist that matches the current guessed word. 
-        # ELSE IF guess was already used
-            # THEN reduce warnings by 1
-            # IF no warnings left
-                # THEN reduce guesses by 1
-        # ELSE IF guess is valid but not in secret_word
-            # IF guess is a vowel
-                # THEN reduce guesses by 2
-            # ELSE guess is a consonant
-                # THEN reduce guesses by 1
-        # ELSE guess is in secret_word
-            # THEN add guess to letters_guessed
+        guesses, warnings = check_guess_with_hints(guess, secret_word,
+                                                   letters_guessed, guesses,
+                                                   warnings)
         print("-------------")
-        break
 
     # PRINT End screen
     print_end_screen(secret_word, guesses)
@@ -469,7 +525,6 @@ if __name__ == "__main__":
     
     # secret_word = choose_word(wordlist)
     # hangman(secret_word)
-    hangman("tact")
 
 ###############
     
@@ -478,3 +533,4 @@ if __name__ == "__main__":
     
     # secret_word = choose_word(wordlist)
     # hangman_with_hints(secret_word)
+    hangman_with_hints("tact")
