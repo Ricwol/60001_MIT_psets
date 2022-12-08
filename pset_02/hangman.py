@@ -151,6 +151,7 @@ def update_stats(guesses, warnings):
     else:
         # THEN reduce guesses by 1
         guesses -= 1
+        warn_resp = "You have no warnings left so you lose one guess:"
     return guesses, warnings, warn_resp
 
 
