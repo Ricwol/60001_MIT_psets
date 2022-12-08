@@ -12,7 +12,7 @@
 
 
 # Given values
-total_cost = 1_000_000
+total_cost = 1000000
 semi_annual_raise = 0.07
 r = 0.04
 epsilon = 100
@@ -25,7 +25,7 @@ portion_down_payment = total_cost * 0.25
 
 # Initialize bisection search boundaries from 0 to 10,000 as per assignment
 low = 0
-high = 10_000
+high = 10000
 
 # Set steps counter to 1 if first saving rate produces the expected result.
 steps = 1
@@ -81,7 +81,7 @@ while high - low > 1:
 # Print results if best saving rate was found for a given starter salary
 # to afford the down payment with 36 months of saving within $100
 if abs(current_savings - portion_down_payment) < epsilon:
-    print(f"Best saving rate: {portion_saved}")
-    print(f"Steps in bisection search: {steps}")
+    print("Best saving rate: {}".format(portion_saved))
+    print("Steps in bisection search: {}".format(steps))
 else:
     print("It is not possible to pay the down payment in three years.")
