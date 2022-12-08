@@ -216,6 +216,17 @@ def check_guess(guess, secret_word, letters_guessed, guesses, warnings):
     return guesses, warnings
 
 
+def print_start_screen(secret_word, warnings):
+    """
+       Print welcome screen for a new game of Hangman.
+    """
+    print("Welcome to the game Hangman!")
+    # PRINT length of the secret word and how many warnings player starts with
+    print(f"I am thinking of a word that is {len(secret_word)} letters long.")
+    print(f"You have {warnings} warnings left")
+    print("-------------")
+
+
 def print_end_screen(secret_word, guesses):
     """
        Prints end screen after game is over.
@@ -272,11 +283,7 @@ def hangman(secret_word):
     letters_guessed = []
 
     # PRINT Start screen to welcome the player
-    print("Welcome to the game Hangman!")
-    # PRINT length of the secret word and how many warnings player starts with
-    print(f"I am thinking of a word that is {len(secret_word)} letters long.")
-    print(f"You have {warnings} warnings left")
-    print("-------------")
+    print_start_screen(secret_word, warnings)
 
     # WHILE player has guesses left and not has guessed the word correclty
     while guesses > 0 and not is_word_guessed(secret_word, letters_guessed):
@@ -369,11 +376,7 @@ def hangman_with_hints(secret_word):
     letters_guessed = []
 
     # PRINT Start screen to welcome the player
-    print("Welcome to the game Hangman!")
-    # PRINT length of the secret word and how many warnings player starts with
-    print(f"I am thinking of a word that is {len(secret_word)} letters long.")
-    print(f"You have {warnings} warnings left")
-    print("-------------")
+    print_start_screen(secret_word, warnings)
 
     # WHILE player has guesses left and not has guessed the word correclty
     while guesses > 0 and not is_word_guessed(secret_word, letters_guessed):
