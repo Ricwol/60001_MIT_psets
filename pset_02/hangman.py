@@ -122,8 +122,36 @@ def hangman(secret_word):
     
     Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    # Initialize guesses=6, warnings=3 and letters_guessed to an empty list
+
+    # PRINT Start screen to welcome the player
+    # PRINT length of the secret word and how many warnings player starts with
+
+    # WHILE player has guesses left and not has guessed the word correclty
+        # PRINT how many guesses are left
+        # PRINT which letters are still available
+
+        # GET input from user; assume that only one letter is entered
+        # IF guess is invalid
+            # THEN reduce warnings by 1
+                # IF no warnings left
+                    # THEN reduce guesses by 1
+        # ELSE IF guess was already used
+            # THEN reduce warnings by 1
+                # IF no warnings left
+                    # THEN reduce guesses by 1
+        # ELSE IF guess is valid but not in secret_word
+            # IF guess is a vowel
+                # THEN reduce guesses by 2
+            # ELSE guess is a consonant
+                # THEN reduce guesses by 1
+        # ELSE guess is in secret_word
+            # THEN add guess to letters_guessed
+
+    # PRINT End screen
+    # IF game was won
+        # THEN print total score
+    # ELSE print secret_word
 
 
 
