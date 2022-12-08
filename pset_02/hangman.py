@@ -120,29 +120,106 @@ def get_guess():
     return guess if guess.isalpha() else ""
 
 
+def check_guess(guess, secret_word, letters_guessed, guesses, warnings):
+    """
+    Check if guess is in secret_word and return updated guesses and warnings.
+
+    If user enters a valid character that is not in secret_word, subtract one
+    guess if character is a consonant, two if a vowel.
+    Invalid guesses or previously asked guesses result in subtracting one from
+    warnings. If no warnings left, player loses one try, i.e. subtract one
+    from guesses.
+
+    Parameters
+    ----------
+    guess : str
+        empty string or one lowercase alphabet character.
+    secret_word : str
+        lowercase secret word.
+    letters_guessed : list
+        list of all valid guesses user already tried.
+    guesses : int
+        a positive number of guesses left.
+    warnings : int
+        number of warnings left.
+
+    Returns
+    -------
+    guesses : int
+        updated number of guesses according to user input.
+    warnings : int
+        updated number of guesses according to user input.
+
+    """
+    response = "Good guess:"
+    # IF guess is invalid
+    if guess == "":
+        # THEN reduce warnings by 1
+        if warnings > 0:
+            warnings -= 1
+            warn_resp = f"You have {warnings} warnings left:"
+        # ELSE IF no warnings left
+        else:
+            # THEN reduce guesses by 1
+            guesses -= 1
+            warn_resp = "You have no warnings left so you lose one guess:"
+        response = f"Oops! That is not a valid letter. {warn_resp}"
+    # ELSE IF guess was already used
+    elif guess in letters_guessed:
+        # THEN reduce warnings by 1
+        if warnings > 0:
+            warnings -= 1
+            warn_resp = f"You have {warnings} warnings left:"
+        # ELSE IF no warnings left
+        else:
+            # THEN reduce guesses by 1
+            guesses -= 1
+            warn_resp = "You have no warnings left so you lose one guess:"
+        response = f"Oops! You've already guessed that letter. {warn_resp}"
+    # ELSE IF guess is valid but not in secret_word
+    elif guess not in secret_word:
+        # IF guess is a vowel
+        if guess in "aeiou":
+            # THEN reduce guesses by 2
+            guesses -= 1
+        # ELSE guess is a consonant
+        # THEN reduce guesses by 1
+        guesses -= 1
+        letters_guessed.append(guess)
+        response = "Oops! That letter is not in my word:"
+    # ELSE guess is in secret_word
+    else:
+        # THEN add guess to letters_guessed
+        letters_guessed.append(guess)
+
+    # Print current status of guessed secret_word
+    print(f"{response} {get_guessed_word(secret_word, letters_guessed)}")
+    return guesses, warnings
+
+
 def hangman(secret_word):
     '''
     secret_word: string, the secret word to guess.
-    
+
     Starts up an interactive game of Hangman.
-    
+
     * At the start of the game, let the user know how many 
       letters the secret_word contains and how many guesses s/he starts with.
-      
+  
     * The user should start with 6 guesses
 
     * Before each round, you should display to the user how many guesses
       s/he has left and the letters that the user has not yet guessed.
-    
+
     * Ask the user to supply one guess per round. Remember to make
       sure that the user puts in a letter!
-    
+
     * The user should receive feedback immediately after each guess 
       about whether their guess appears in the computer's word.
 
     * After each guess, you should display to the user the 
       partially guessed word so far.
-    
+
     Follows the other limitations detailed in the problem write-up.
     '''
     # Initialize guesses=6, warnings=3 and letters_guessed to an empty list
@@ -166,28 +243,16 @@ def hangman(secret_word):
 
         # GET input from user; assume that only one letter is entered
         guess = get_guess()
-        # IF guess is invalid
-            # THEN reduce warnings by 1
-                # IF no warnings left
-                    # THEN reduce guesses by 1
-        # ELSE IF guess was already used
-            # THEN reduce warnings by 1
-                # IF no warnings left
-                    # THEN reduce guesses by 1
-        # ELSE IF guess is valid but not in secret_word
-            # IF guess is a vowel
-                # THEN reduce guesses by 2
-            # ELSE guess is a consonant
-                # THEN reduce guesses by 1
-        # ELSE guess is in secret_word
-            # THEN add guess to letters_guessed
+
+        # Check guess and update guesses and warnings accordingly
+        guesses, warnings = check_guess(guess, secret_word, letters_guessed,
+                                        guesses, warnings)
         print("-------------")
 
     # PRINT End screen
     # IF game was won
         # THEN print total score
     # ELSE print secret_word
-
 
 
 # When you've completed your hangman function, scroll down to the bottom
