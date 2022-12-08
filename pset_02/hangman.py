@@ -269,8 +269,19 @@ def hangman(secret_word):
 
     # PRINT End screen
     # IF game was won
+    if guesses > 0:
+        # Remove duplicates by casting secret_word to set
+        unique_letter = set(secret_word)
+        # Calculate total score
+        # based on unique letters in secret_word and guesses left
+        total_score = guesses * len(unique_letter)
+
         # THEN print total score
+        print("Congratulations, you won!")
+        print(f"Your total score for this game is: {total_score}")
     # ELSE print secret_word
+    else:
+        print(f"Sorry, you ran out of guesses. The word was {secret_word}.")
 
 
 # When you've completed your hangman function, scroll down to the bottom
