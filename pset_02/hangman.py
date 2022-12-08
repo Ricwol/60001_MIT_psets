@@ -146,7 +146,7 @@ def update_stats(guesses, warnings):
     if warnings > 0:
         # THEN reduce warnings by 1
         warnings -= 1
-        warn_resp = f"You have {warnings} warnings left:"
+        warn_resp = "You have {} warnings left:".format(warnings)
     # ELSE IF no warnings left
     else:
         # THEN reduce guesses by 1
@@ -190,11 +190,11 @@ def check_guess(guess, secret_word, letters_guessed, guesses, warnings):
     # IF guess is invalid
     if guess == "":
         guesses, warnings, warn_resp = update_stats(guesses, warnings)
-        response = f"Oops! That is not a valid letter. {warn_resp}"
+        response = "Oops! That is not a valid letter. " + warn_resp
     # ELSE IF guess was already used
     elif guess in letters_guessed:
         guesses, warnings, warn_resp = update_stats(guesses, warnings)
-        response = f"Oops! You've already guessed that letter. {warn_resp}"
+        response = "Oops! You've already guessed that letter. " + warn_resp
     # ELSE IF guess is valid but not in secret_word
     elif guess not in secret_word:
         # IF guess is a vowel
@@ -212,7 +212,7 @@ def check_guess(guess, secret_word, letters_guessed, guesses, warnings):
         letters_guessed.append(guess)
 
     # Print current status of guessed secret_word
-    print(f"{response} {get_guessed_word(secret_word, letters_guessed)}")
+    print(response + " " + get_guessed_word(secret_word, letters_guessed))
     return guesses, warnings
 
 
@@ -222,8 +222,8 @@ def print_start_screen(secret_word, warnings):
     """
     print("Welcome to the game Hangman!")
     # PRINT length of the secret word and how many warnings player starts with
-    print(f"I am thinking of a word that is {len(secret_word)} letters long.")
-    print(f"You have {warnings} warnings left")
+    print("I am thinking of a word that is {} letters long.".format(len(secret_word)))
+    print("You have {} warnings left".format(warnings))
     print("-------------")
 
 
@@ -243,10 +243,10 @@ def print_end_screen(secret_word, guesses):
 
         # THEN print total score
         print("Congratulations, you won!")
-        print(f"Your total score for this game is: {total_score}")
+        print("Your total score for this game is:", total_score)
     # ELSE print secret_word
     else:
-        print(f"Sorry, you ran out of guesses. The word was {secret_word}.")
+        print("Sorry, you ran out of guesses. The word was", secret_word)
 
 
 def get_guess_with_hints():
@@ -309,9 +309,9 @@ def hangman(secret_word):
     # WHILE player has guesses left and not has guessed the word correclty
     while guesses > 0 and not is_word_guessed(secret_word, letters_guessed):
         # PRINT how many guesses are left
-        print(f"You have {guesses} guesses left")
+        print("You have {} guesses left".format(guesses))
         # PRINT which letters are still available
-        print(f"Available Letters: {get_available_letters(letters_guessed)}")
+        print("Available Letters:", get_available_letters(letters_guessed))
 
         # GET input from user; assume that only one letter is entered
         guess = get_guess()
@@ -424,9 +424,9 @@ def hangman_with_hints(secret_word):
     # WHILE player has guesses left and not has guessed the word correclty
     while guesses > 0 and not is_word_guessed(secret_word, letters_guessed):
         # PRINT how many guesses are left
-        print(f"You have {guesses} guesses left")
+        print("You have {} guesses left".format(guesses))
         # PRINT which letters are still available
-        print(f"Available Letters: {get_available_letters(letters_guessed)}")
+        print("Available Letters:", get_available_letters(letters_guessed))
 
         # GET input from user; assume that only one letter is entered
         guess = get_guess_with_hints()
@@ -467,13 +467,14 @@ if __name__ == "__main__":
     # To test part 2, comment out the pass line above and
     # uncomment the following two lines.
     
-    secret_word = choose_word(wordlist)
-    hangman(secret_word)
+    # secret_word = choose_word(wordlist)
+    # hangman(secret_word)
+    hangman("tact")
 
 ###############
     
     # To test part 3 re-comment out the above lines and 
     # uncomment the following two lines. 
     
-    #secret_word = choose_word(wordlist)
-    #hangman_with_hints(secret_word)
+    # secret_word = choose_word(wordlist)
+    # hangman_with_hints(secret_word)
