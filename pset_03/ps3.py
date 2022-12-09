@@ -342,7 +342,7 @@ def play_hand(hand, word_list):
 #
 
 def substitute_hand(hand, letter):
-    """ 
+    """
     Allow the user to replace all copies of one letter in the hand (chosen by user)
     with a new letter chosen from the VOWELS and CONSONANTS at random. The new letter
     should be different from user's choice, and should not be any of the letters
@@ -358,15 +358,31 @@ def substitute_hand(hand, letter):
         {'h':1, 'e':1, 'o':1, 'x':2} -> if the new letter is 'x'
     The new letter should not be 'h', 'e', 'l', or 'o' since those letters were
     already in the hand.
-    
+
     hand: dictionary (string -> int)
     letter: string
     returns: dictionary (string -> int)
     """
-    
-    pass  # TO DO... Remove this line when you implement this function
-       
-    
+
+    # Create copy of current hand
+    sub_hand = hand.copy()
+    if letter in hand:
+        # Pick random letter FROM all ascii lowercase letters
+        sub_letter = random.choice(string.ascii_lowercase)
+        # WHILE randomly chosen letter IN hand
+        while sub_letter in hand:
+            # DO SELECT another random letter
+            sub_letter = random.choice(string.ascii_lowercase)
+        # GET value of letter
+        let_val = sub_hand[letter]
+        # Remove letter from hand
+        del sub_hand[letter]
+        # Add substituted letter to hand with same amount as previous letter
+        sub_hand[sub_letter] = let_val
+    # RETURN sub_hand
+    return sub_hand
+
+
 def play_game(word_list):
     """
     Allow the user to play a series of hands
@@ -410,4 +426,3 @@ def play_game(word_list):
 if __name__ == '__main__':
     word_list = load_words()
     play_game(word_list)
-
