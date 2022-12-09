@@ -413,9 +413,61 @@ def play_game(word_list):
 
     word_list: list of lowercase strings
     """
-    
-    print("play_game not implemented.") # TO DO... Remove this line when you implement this function
-    
+    # INITIALIZE total_game_score score to 0, substitute_letter and
+    # replayed_hand to False
+    total_game_score = 0
+    substitute_letter = False
+    replayed_hand = False
+
+    # GET number of hands from user
+    hands = int(input("Enter total number of hands: "))
+    # WHILE player has hands left to play
+    while hands > 0:
+        # DO play hand
+        # INITIALIZE total_score for current hand to 0
+        total_score = 0
+        # GET hand of size HAND_SIZE
+        hand = deal_hand(HAND_SIZE)
+
+        # Player can substitute one letter per game
+        if not substitute_letter:
+            print("Current hand: ", end="")
+            display_hand(hand)
+            # GET user input if player wants to substitute a letter
+            user_input = input("Would you like to substitute a letter? ")
+            # IF player wants to substitute a letter
+            if user_input.lower()[0] == "y":
+                # THEN GET letter from user input
+                letter = input("Which letter would you like to replace: ")
+                # Update hand with substituted letter
+                hand = substitute_hand(hand, letter)
+                substitute_letter = True
+            print()
+
+        # SET total_score TO score of current game of hand
+        total_score = play_hand(hand, word_list)
+        print("Total score for this hand:", total_score)
+        print("----------")
+
+        # Player can replay one hand per game
+        if not replayed_hand:
+            # Ask user if he wants to replay his hand
+            user_input = input("Would you like to replay the hand? ")
+            # IF user doesn't want to replay his hand
+            if user_input.lower()[0] == "y":
+                # THEN replay the current hand
+                replay_score = play_hand(hand, word_list)
+                print("Total score for this hand:", total_score)
+                print("----------")
+
+                replayed_hand = True
+                # Keep the better score of both runs
+                total_score = max(total_score, replay_score)
+        # Decrement hands by 1
+        hands -= 1
+        # ADD total_score TO total_game_score
+        total_game_score += total_score
+    print("Total score over all hands: {} points".format(total_game_score))
 
 
 #
