@@ -198,6 +198,7 @@ def update_hand(hand, word):
     # RETURN updated copy of hand
     return hand_copy
 
+
 #
 # Problem #3: Test word validity
 #
@@ -206,30 +207,49 @@ def is_valid_word(word, hand, word_list):
     Returns True if word is in the word_list and is entirely
     composed of letters in the hand. Otherwise, returns False.
     Does not mutate hand or word_list.
-   
+
     word: string
     hand: dictionary (string -> int)
     word_list: list of lowercase strings
     returns: boolean
     """
+    # Convert all letters to lowercase
+    word = word.lower()
+    # Get individual letter frequency in word
+    frequency = get_frequency_dict(word)
 
-    pass  # TO DO... Remove this line when you implement this function
+    # LOOP through all letters in word to see if word can be composed of
+    # letters in the hand
+    for letter, freq in frequency.items():
+        # IF letter not in hand OR freq > count in hand[letter]
+        if letter not in hand or freq > hand[letter]:
+            # THEN the word can't be composed with the letters in the hand
+            return False
+
+    # Word can be composed of letters in the hand
+    # IF word in word_list
+    if word in word_list:
+        # THEN RETURN True as valid word is found
+        return True
+    # No valid word was found
+    return False
+
 
 #
 # Problem #5: Playing a hand
 #
 def calculate_handlen(hand):
-    """ 
+    """
     Returns the length (number of letters) in the current hand.
-    
+
     hand: dictionary (string-> int)
     returns: integer
     """
-    
+
     pass  # TO DO... Remove this line when you implement this function
 
-def play_hand(hand, word_list):
 
+def play_hand(hand, word_list):
     """
     Allows the user to play the given hand, as follows:
 
