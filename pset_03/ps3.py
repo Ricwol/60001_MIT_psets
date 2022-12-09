@@ -231,16 +231,24 @@ def is_valid_word(word, hand, word_list):
     word = word.lower()
     # Get individual letter frequency in word
     frequency = get_frequency_dict(word)
+    # Initialize valid_word to False
+    valid_word = False
 
     # IF word can be composed with letters in the hand
     if compose_word(hand, frequency):
-        # THEN check if given word is a valid word in word_list
-        # IF word in word_list
-        if word in word_list:
-            # THEN RETURN True as valid word is found
-            return True
-    # No valid word was found
-    return False
+        # IF wildcard in word
+        if "*" in word:
+            # THEN test if wildcard can be replaced by a vowel
+            # to form a valid word from word_list
+            # LOOP through all vowels in VOWELS
+            for vowel in VOWELS:
+                wildcard = word.replace("*", vowel)
+                if wildcard in word_list:
+                    valid_word = True
+        # ELSE word only contains alphabetic letters
+        elif word in word_list:
+            valid_word = True
+    return valid_word
 
 
 #
