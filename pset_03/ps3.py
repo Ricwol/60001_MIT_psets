@@ -91,8 +91,24 @@ def get_word_score(word, n):
     n: int >= 0
     returns: int >= 0
     """
-    
-    pass  # TO DO... Remove this line when you implement this function
+
+    # Convert all letters in word to lowercase
+    word = word.lower()
+    # INITIALIZE total_points VARIABLE TO 0
+    total_points = 0
+    # LOOP through all letters in word
+    for letter in word:
+        # ADD value of letter TO total_points IF wildcard return 0
+        total_points += SCRABBLE_LETTER_VALUES.get(letter, 0)
+    # INITIALIZE word_len VARIABLE TO word length
+    word_len = len(word)
+    # Compute value for second component
+    calculated_value = 7*word_len - 3*(n - word_len)
+    # Compute word_score
+    word_score = total_points * max(calculated_value, 1)
+    # RETURN word_score
+    return word_score
+
 
 #
 # Make sure you understand how this function works and what it does!
