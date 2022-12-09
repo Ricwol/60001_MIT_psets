@@ -162,6 +162,7 @@ def deal_hand(n):
     
     return hand
 
+
 #
 # Problem #2: Update a hand by removing letters
 #
@@ -172,7 +173,7 @@ def update_hand(hand, word):
     appear in hand should be ignored. Letters that appear in word more times
     than in hand should never result in a negative count; instead, set the
     count in the returned hand to 0 (or remove the letter from the
-    dictionary, depending on how your code is structured). 
+    dictionary, depending on how your code is structured).
 
     Updates the hand: uses up the letters in the given word
     and returns the new hand, without those letters in it.
@@ -180,11 +181,22 @@ def update_hand(hand, word):
     Has no side effects: does not modify hand.
 
     word: string
-    hand: dictionary (string -> int)    
+    hand: dictionary (string -> int)
     returns: dictionary (string -> int)
     """
 
-    pass  # TO DO... Remove this line when you implement this function
+    # Convert all letters to lowercase
+    word = word.lower()
+    # CREATE copy of hand
+    hand_copy = hand.copy()
+    # LOOP through all letters of word
+    for letter in word:
+        # IF letter IN hand_copy AND letter count is greater than 0
+        if letter in hand_copy and hand_copy[letter] > 0:
+            # THEN subtract 1 FROM letter count in hand_copy
+            hand_copy[letter] -= 1
+    # RETURN updated copy of hand
+    return hand_copy
 
 #
 # Problem #3: Test word validity
