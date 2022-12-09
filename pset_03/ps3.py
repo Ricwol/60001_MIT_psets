@@ -215,24 +215,30 @@ def is_valid_word(word, hand, word_list):
     word_list: list of lowercase strings
     returns: boolean
     """
+    # Define helper function compose_word
+    def compose_word(hand, frequency):
+        # LOOP through all letters in word to see if word can be composed of
+        # letters in the hand
+        for letter, freq in frequency.items():
+            # IF letter not in hand OR freq > count in hand[letter]
+            if letter not in hand or freq > hand[letter]:
+                # THEN the word can't be composed with the letters in the hand
+                return False
+        # RETURN True as word can be composed with letters in hand
+        return True
+
     # Convert all letters to lowercase
     word = word.lower()
     # Get individual letter frequency in word
     frequency = get_frequency_dict(word)
 
-    # LOOP through all letters in word to see if word can be composed of
-    # letters in the hand
-    for letter, freq in frequency.items():
-        # IF letter not in hand OR freq > count in hand[letter]
-        if letter not in hand or freq > hand[letter]:
-            # THEN the word can't be composed with the letters in the hand
-            return False
-
-    # Word can be composed of letters in the hand
-    # IF word in word_list
-    if word in word_list:
-        # THEN RETURN True as valid word is found
-        return True
+    # IF word can be composed with letters in the hand
+    if compose_word(hand, frequency):
+        # THEN check if given word is a valid word in word_list
+        # IF word in word_list
+        if word in word_list:
+            # THEN RETURN True as valid word is found
+            return True
     # No valid word was found
     return False
 
