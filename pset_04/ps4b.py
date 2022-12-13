@@ -104,7 +104,17 @@ class Message(object):
         Returns: a dictionary mapping a letter (string) to 
                  another letter (string). 
         '''
-        pass #delete this line and replace with your code here
+        shift_dict = {}
+        lowercase = string.ascii_lowercase
+        uppercase = string.ascii_uppercase
+
+        for i in range(26):
+            # Limit range to 0 <= shift < 26
+            shifted_i = (i+shift) % 26
+            shift_dict[lowercase[i]] = lowercase[shifted_i]
+            shift_dict[uppercase[i]] = uppercase[shifted_i]
+        return shift_dict
+        
 
     def apply_shift(self, shift):
         '''
