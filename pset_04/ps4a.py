@@ -22,7 +22,14 @@ def get_permutations(sequence):
     Note: depending on your implementation, you may return the permutations in
     a different order than what is listed here.
     '''
+    # Base case
+    # A sequence of only one character has only one permutation
+    
+    # Recursive case
+    # WHILE sequence has n >= 2 characters
+    # CHECK all permutations for sub sequence 1..n-1
 
+    # RETURN all permutations
     pass #delete this line and replace with your code here
 
 if __name__ == '__main__':
