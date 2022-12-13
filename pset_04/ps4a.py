@@ -32,7 +32,7 @@ def get_permutations(sequence):
     permutations = []
     letters_used = set()
     # LOOP through all letters in sequence
-    for i, letter in enumerate(sequence):
+    for letter in sequence:
         # If letter is no duplicate get all permutations
         if letter not in letters_used:
             # Get substring without current letter
