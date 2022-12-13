@@ -23,14 +23,23 @@ def get_permutations(sequence):
     a different order than what is listed here.
     '''
     # Base case
-    # A sequence of only one character has only one permutation
-    
-    # Recursive case
-    # WHILE sequence has n >= 2 characters
-    # CHECK all permutations for sub sequence 1..n-1
+    # A sequence with only 1 character.
+    if len(sequence) == 1:
+        return [sequence]
 
+    # Recursive case
+    # Any sequence longer than one character
+    permutations = []
+    # LOOP through all letters in sequence
+    for i, letter in enumerate(sequence):
+        # Get substring without current letter
+        sub = sequence[:i] + sequence[i+1:]
+        # CHECK all permutations for sub sequence without current letter
+        for permutation in get_permutations(sub):
+            # Append current letter to all permutations of substring
+            permutations.append(letter + permutation)
     # RETURN all permutations
-    pass #delete this line and replace with your code here
+    return permutations
 
 if __name__ == '__main__':
 #    #EXAMPLE
