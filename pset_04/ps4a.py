@@ -30,16 +30,21 @@ def get_permutations(sequence):
     # Recursive case
     # Any sequence longer than one character
     permutations = []
+    letters_used = set()
     # LOOP through all letters in sequence
     for i, letter in enumerate(sequence):
-        # Get substring without current letter
-        sub = sequence[:i] + sequence[i+1:]
-        # CHECK all permutations for sub sequence without current letter
-        for permutation in get_permutations(sub):
-            # Append current letter to all permutations of substring
-            permutations.append(letter + permutation)
+        # If letter is no duplicate get all permutations
+        if letter not in letters_used:
+            # Get substring without current letter
+            sub = sequence.replace(letter, "", 1)
+            # CHECK all permutations for sub sequence without current letter
+            for permutation in get_permutations(sub):
+                # Append current letter to all permutations of substring
+                permutations.append(letter + permutation)
+            letters_used.add(letter)
     # RETURN all permutations
     return permutations
+
 
 if __name__ == '__main__':
 #    #EXAMPLE
@@ -93,3 +98,14 @@ if __name__ == '__main__':
     print('Input: "{}"'.format(example_input))
     print('Expected Output:', expected_output)
     print('Actual Output:', get_permutations(example_input))
+    print()
+
+    # Exhaustive test call with duplicates
+    print("Sequence of length 4 with duplicates")
+    example_input = 'aabd'
+    expected_output = ['aabd', 'aadb', 'abad', 'abda', 'adab', 'adba',
+                       'baad', 'bada', 'bdaa', 'daab', 'daba', 'dbaa']
+    print('Input: "{}"'.format(example_input))
+    print('Expected Output:', expected_output)
+    print('Actual Output:', get_permutations(example_input))
+    print("All tests finished!")
