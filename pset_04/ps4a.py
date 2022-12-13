@@ -77,6 +77,13 @@ if __name__ == '__main__':
     print('Input: "{}"'.format(example_input))
     print('Expected Output:', expected_output)
     print('Actual Output:', get_permutations(example_input))
+    print()
+
+    # String with duplicate letter
+    example_input = "aa"
+    expected_output = ["aa"]
+    print('Expected Output:', expected_output)
+    print('Actual Output:', get_permutations(example_input))
     print("-"*70)
 
     print("TESTING Two or more recursive calls")
