@@ -57,6 +57,7 @@ if __name__ == '__main__':
     # Empty string
     example_input = ""
     expected_output = []
+    print('Input: "{}"'.format(example_input))
     print('Expected Output:', expected_output)
     print('Actual Output:', get_permutations(example_input))
     print()
@@ -64,6 +65,7 @@ if __name__ == '__main__':
     # String with only one letter
     example_input = 'a'
     expected_output = ['a']
+    print('Input: "{}"'.format(example_input))
     print('Expected Output:', expected_output)
     print('Actual Output:', get_permutations(example_input))
     print("-"*70)
@@ -72,6 +74,15 @@ if __name__ == '__main__':
     # String with two unique letter
     example_input = 'ab'
     expected_output = ['ab', 'ba']
+    print('Input: "{}"'.format(example_input))
     print('Expected Output:', expected_output)
     print('Actual Output:', get_permutations(example_input))
     print("-"*70)
+
+    print("TESTING Two or more recursive calls")
+    # String with three unique character
+    example_input = '012'
+    expected_output = ['012', '021', '102', '120', '201', '210']
+    print('Input: "{}"'.format(example_input))
+    print('Expected Output:', expected_output)
+    print('Actual Output:', get_permutations(example_input))
