@@ -36,10 +36,10 @@ def get_permutations(sequence):
         # If letter is no duplicate get all permutations
         if letter not in letters_used:
             # Get substring without current letter
-            sub = sequence.replace(letter, "", 1)
-            # CHECK all permutations for sub sequence without current letter
-            for permutation in get_permutations(sub):
-                # Append current letter to all permutations of substring
+            subsequence = sequence.replace(letter, "", 1)
+            # CHECK all permutations for subsequence without current letter
+            for permutation in get_permutations(subsequence):
+                # Append current letter to all permutations of subsequence
                 permutations.append(letter + permutation)
             letters_used.add(letter)
     # RETURN all permutations
@@ -52,9 +52,9 @@ if __name__ == '__main__':
 #    print('Input:', example_input)
 #    print('Expected Output:', ['abc', 'acb', 'bac', 'bca', 'cab', 'cba'])
 #    print('Actual Output:', get_permutations(example_input))
-    
+
 #    # Put three example test cases here (for your sanity, limit your inputs
-#    to be three characters or fewer as you will have n! permutations for a 
+#    to be three characters or fewer as you will have n! permutations for a
 #    sequence of length n)
 
     # Test cases
@@ -87,6 +87,7 @@ if __name__ == '__main__':
     # String with duplicate letter
     example_input = "aa"
     expected_output = ["aa"]
+    print('Input: "{}"'.format(example_input))
     print('Expected Output:', expected_output)
     print('Actual Output:', get_permutations(example_input))
     print("-"*70)
@@ -108,4 +109,3 @@ if __name__ == '__main__':
     print('Input: "{}"'.format(example_input))
     print('Expected Output:', expected_output)
     print('Actual Output:', get_permutations(example_input))
-    print("All tests finished!")
