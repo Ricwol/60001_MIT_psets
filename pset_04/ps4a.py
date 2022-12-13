@@ -52,5 +52,20 @@ if __name__ == '__main__':
 #    to be three characters or fewer as you will have n! permutations for a 
 #    sequence of length n)
 
-    pass #delete this line and replace with your code here
+    # Test cases
+    print("TESTING No recursive call")
+    # Empty string
+    example_input = ""
+    expected_output = []
+    print('Expected Output:', expected_output)
+    print('Actual Output:', get_permutations(example_input))
+    print()
+
+    # String with only one letter
+    example_input = 'a'
+    expected_output = ['a']
+    print('Expected Output:', expected_output)
+    print('Actual Output:', get_permutations(example_input))
+    print("-"*70)
+
 
