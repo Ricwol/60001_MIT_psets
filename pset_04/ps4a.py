@@ -68,4 +68,10 @@ if __name__ == '__main__':
     print('Actual Output:', get_permutations(example_input))
     print("-"*70)
 
-
+    print("TESTING Exactly one recursive call")
+    # String with two unique letter
+    example_input = 'ab'
+    expected_output = ['ab', 'ba']
+    print('Expected Output:', expected_output)
+    print('Actual Output:', get_permutations(example_input))
+    print("-"*70)
