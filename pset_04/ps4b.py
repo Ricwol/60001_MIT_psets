@@ -154,9 +154,8 @@ class PlaintextMessage(Message):
 
         '''
         super().__init__(text)
-        self.shift = shift
-        self.encryption_dict = self.build_shift_dict(shift)
-        self.message_text_encrypted = self.apply_shift(shift)
+        # Initialize attributes in change_shift to avoid code duplication 
+        self.change_shift(shift)
 
     def get_shift(self):
         '''
@@ -192,7 +191,9 @@ class PlaintextMessage(Message):
 
         Returns: nothing
         '''
-        pass #delete this line and replace with your code here
+        self.shift = shift
+        self.encryption_dict = self.build_shift_dict(shift)
+        self.message_text_encrypted = self.apply_shift(shift)
 
 
 class CiphertextMessage(Message):
