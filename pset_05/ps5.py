@@ -118,6 +118,8 @@ class Trigger(object):
 
 # Problem 2
 # TODO: PhraseTrigger
+class PhraseTrigger(Trigger):
+    pass
 
 # Problem 3
 # TODO: TitleTrigger
