@@ -273,6 +273,8 @@ class AndTrigger(Trigger):
 
 # Problem 9
 # TODO: OrTrigger
+class OrTrigger(Trigger):
+    pass
 
 
 #======================
