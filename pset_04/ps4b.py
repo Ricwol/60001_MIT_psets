@@ -251,6 +251,14 @@ if __name__ == '__main__':
 #    print('Actual Output:', ciphertext.decrypt_message())
 
     #TODO: WRITE YOUR TEST CASES HERE
+    print("Testing PlaintextMessage:")
+    plaintext = PlaintextMessage("abcxyz", -1)
+    print('Expected Output: zabwxy')
+    print('Actual Output:', plaintext.get_message_text_encrypted())
+    print()
+    plaintext = PlaintextMessage("abcxyz", 2)
+    print('Expected Output: cdezab')
+    print('Actual Output:', plaintext.get_message_text_encrypted())
 
     #TODO: best shift value and unencrypted story 
     
