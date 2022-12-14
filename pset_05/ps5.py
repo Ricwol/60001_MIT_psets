@@ -275,6 +275,12 @@ class NotTrigger(Trigger):
         """
         self.trigger = trigger
 
+    def evaluate(self, story):
+        """
+        Returns True if story doesn't trigger Trigger, False otherwise.
+        """
+        return not self.trigger.evaluate(story)
+
 
 # Problem 8
 # TODO: AndTrigger
