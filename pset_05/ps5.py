@@ -228,7 +228,17 @@ class TimeTrigger(Trigger):
 class BeforeTrigger(TimeTrigger):
 
     def evaluate(self, story):
-        return self.date_string > story.get_pubdate()
+        pubdate = story.get_pubdate()
+        date_string = self.date_string
+        try:
+            # Try comparing offset-naive datetimes
+            return date_string > pubdate
+        except TypeError:
+            # Add timezone to date_string to make it an offset-aware datetime
+            # Timezone EST
+            date_string = date_string.replace(tzinfo=pytz.timezone("EST"))
+        # Compare offset-aware datetimes
+        return date_string > pubdate
         
 
 
