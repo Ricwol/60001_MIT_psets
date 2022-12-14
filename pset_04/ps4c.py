@@ -191,5 +191,25 @@ if __name__ == '__main__':
     print("Actual encryption:", message.apply_transpose(enc_dict))
     enc_message = EncryptedSubMessage(message.apply_transpose(enc_dict))
     print("Decrypted message:", enc_message.decrypt_message())
-     
+    print("-"*70)
+
     #TODO: WRITE YOUR TEST CASES HERE
+    # Test cases for SubMessage
+    message = SubMessage("Alphabet zoo united!")
+    permutation = "iauoe"  # a->i e->a i->u o->o u->e
+    enc_dict = message.build_transpose_dict(permutation)
+    print("Original message:", message.get_message_text(), "Permutation:", permutation)
+    print("Expected encryption:", "Ilphibat zoo enutad!")
+    print("Actual encryption:", message.apply_transpose(enc_dict))
+    enc_message = EncryptedSubMessage(message.apply_transpose(enc_dict))
+    print("Decrypted message:", enc_message.decrypt_message())
+    print("-"*70)
+
+    message = SubMessage("A quick brown fox jumps over the lazy dog.")
+    permutation = "uoiea"
+    enc_dict = message.build_transpose_dict(permutation)
+    print("Original message:", message.get_message_text(), "Permutation:", permutation)
+    print("Expected encryption:", "U qaick brewn fex jamps evor tho luzy deg.")
+    print("Actual encryption:", message.apply_transpose(enc_dict))
+    enc_message = EncryptedSubMessage(message.apply_transpose(enc_dict))
+    print("Decrypted message:", enc_message.decrypt_message())
