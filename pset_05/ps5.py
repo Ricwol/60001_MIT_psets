@@ -74,7 +74,11 @@ class NewsStory:
         pubdate : datetime
             Date the news was published
         """
-        pass
+        self._guid = guid
+        self._title = title
+        self._description = description
+        self._link = link
+        self._pubdate = pubdate
 
 
 #======================
