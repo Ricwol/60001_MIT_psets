@@ -225,7 +225,18 @@ class CiphertextMessage(Message):
         Returns: a tuple of the best shift value used to decrypt the message
         and the decrypted message text using that shift value
         '''
-        pass #delete this line and replace with your code here
+        word_list = self.get_valid_words()
+        max_hits = 0
+        for s in range(26):
+            shift = 26 - s
+            message = self.apply_shift(shift)
+            words = message.split()
+            hits = sum(1 for word in words if is_word(word_list, word))
+            if hits >= max_hits:
+                best_match = (shift, message)
+                max_hits = hits
+        return best_match
+
 
 if __name__ == '__main__':
 
