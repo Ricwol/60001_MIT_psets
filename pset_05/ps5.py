@@ -262,7 +262,18 @@ class AfterTrigger(TimeTrigger):
 # Problem 7
 # TODO: NotTrigger
 class NotTrigger(Trigger):
-    pass
+
+    def __init__(self, trigger):
+        """
+        Create a NotTrigger object.
+
+        Parameters
+        ----------
+        trigger : Trigger
+            A Trigger object.
+
+        """
+        self.trigger = trigger
 
 
 # Problem 8
