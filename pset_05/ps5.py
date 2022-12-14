@@ -210,17 +210,17 @@ class TimeTrigger(Trigger):
 # Constructor:
 #        Input: Time has to be in EST and in the format of "%d %b %Y %H:%M:%S".
 #        Convert time from string to a datetime before saving it as an attribute.
-    def __init__(self, est):
+    def __init__(self, date_string):
         """
         Create a TimeTrigger object.
 
         Parameters
         ----------
-        est : str
-            Time string in EST and in the format "%d %b %Y %H:%M:%S".
-
+        date_string : str
+            Assumes that `date_string` is in EST and in the format
+            "%d %b %Y %H:%M:%S".
         """
-        pass
+        self.date_string = datetime.strptime(date_string, "%d %b %Y %H:%M:%S")
 
 # Problem 6
 # TODO: BeforeTrigger and AfterTrigger
