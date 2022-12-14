@@ -119,7 +119,18 @@ class Trigger(object):
 # Problem 2
 # TODO: PhraseTrigger
 class PhraseTrigger(Trigger):
-    pass
+
+    def __init__(self, phrase):
+        """
+        Create a PhraseTrigger object.
+
+        Parameters
+        ----------
+        phrase : str
+            A simple phrase to set a trigger.
+        """
+        self._phrase = phrase
+
 
 # Problem 3
 # TODO: TitleTrigger
