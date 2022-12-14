@@ -222,9 +222,11 @@ class TimeTrigger(Trigger):
         """
         self.date_string = datetime.strptime(date_string, "%d %b %Y %H:%M:%S")
 
+
 # Problem 6
 # TODO: BeforeTrigger and AfterTrigger
-
+class BeforeTrigger(TimeTrigger):
+    pass
 
 # COMPOSITE TRIGGERS
 
