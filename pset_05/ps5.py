@@ -88,6 +88,14 @@ class NewsStory:
         """Return title of a news story"""
         return self._title
 
+    def get_description(self):
+        """Return description of a news story"""
+        return self._description
+
+    def get_link(self):
+        """Returns link to a news story"""
+        return self._link
+
 
 #======================
 # Triggers
