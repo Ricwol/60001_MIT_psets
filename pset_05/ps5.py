@@ -178,7 +178,8 @@ class PhraseTrigger(Trigger):
 
 # Problem 3
 # TODO: TitleTrigger
-
+class TitleTrigger(PhraseTrigger):
+    pass
 # Problem 4
 # TODO: DescriptionTrigger
 
