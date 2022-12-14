@@ -120,7 +120,7 @@ class SubMessage(object):
             transpose_dict[letter] = letter
 
         return transpose_dict
-    
+
     def apply_transpose(self, transpose_dict):
         '''
         transpose_dict (dict): a transpose dictionary
@@ -128,8 +128,11 @@ class SubMessage(object):
         Returns: an encrypted version of the message text, based 
         on the dictionary
         '''
-        
-        pass #delete this line and replace with your code here
+        encrypted_message = ""
+        for letter in self.message_text:
+            # If letter not in transpose_dict return given letter
+            encrypted_message += transpose_dict.get(letter, letter)
+        return encrypted_message
         
 class EncryptedSubMessage(SubMessage):
     def __init__(self, text):
