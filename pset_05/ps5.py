@@ -131,6 +131,28 @@ class PhraseTrigger(Trigger):
         """
         self._phrase = phrase
 
+    def is_phrase_in(self, text):
+        """
+        Returns True if the whole phrase is present in text, False otherwise.
+
+        Trigger fires only when each word in the phrase is present in its
+        entirety and appears consecutively in the text, separated only by
+        spaces or punctuation.
+
+        Parameters
+        ----------
+        text : str
+            A text of a news story.
+
+        Returns
+        -------
+        is_in : bool
+            True if the whole phrase is consecutively present in text, False
+            otherwise
+
+        """
+        pass
+
 
 # Problem 3
 # TODO: TitleTrigger
