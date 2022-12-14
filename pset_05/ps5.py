@@ -239,7 +239,6 @@ class BeforeTrigger(TimeTrigger):
             date_string = date_string.replace(tzinfo=pytz.timezone("EST"))
         # Compare offset-aware datetimes
         return date_string > pubdate
-        
 
 
 class AfterTrigger(TimeTrigger):
@@ -256,13 +255,15 @@ class AfterTrigger(TimeTrigger):
             date_string = date_string.replace(tzinfo=pytz.timezone("EST"))
         # Compare offset-aware datetimes
         return date_string < pubdate
-            
 
 
 # COMPOSITE TRIGGERS
 
 # Problem 7
 # TODO: NotTrigger
+class NotTrigger(Trigger):
+    pass
+
 
 # Problem 8
 # TODO: AndTrigger
