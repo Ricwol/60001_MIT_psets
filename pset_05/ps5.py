@@ -226,7 +226,10 @@ class TimeTrigger(Trigger):
 # Problem 6
 # TODO: BeforeTrigger and AfterTrigger
 class BeforeTrigger(TimeTrigger):
-    pass
+
+    def evaluate(self, story):
+        return self.date_string > story.get_pubdate()
+        
 
 
 class AfterTrigger(TimeTrigger):
