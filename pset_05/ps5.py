@@ -55,6 +55,26 @@ def process(url):
 # Problem 1
 
 # TODO: NewsStory
+class NewsStory:
+
+    def __init__(self, guid, title, description, link, pubdate):
+        """
+        Create a NewsStory object.
+
+        Parameters
+        ----------
+        guid : str
+            A globally unique identifier for this news story.
+        title : str
+            The news story's headline.
+        description : str
+            A paragraph or so summarizing the news story.
+        link : str
+            A link to a website with the entire story
+        pubdate : datetime
+            Date the news was published
+        """
+        pass
 
 
 #======================
