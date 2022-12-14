@@ -191,7 +191,15 @@ class TitleTrigger(PhraseTrigger):
 # Problem 4
 # TODO: DescriptionTrigger
 class DescriptionTrigger(PhraseTrigger):
-    pass
+
+    def evaluate(self, story):
+        """
+        Returns True if self.phrase is in news story's description, False
+        otherwise.
+        """
+        description = story.get_description()
+        return self.is_phrase_in(description)
+
 
 # TIME TRIGGERS
 
