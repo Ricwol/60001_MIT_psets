@@ -205,10 +205,11 @@ class DescriptionTrigger(PhraseTrigger):
 
 # Problem 5
 # TODO: TimeTrigger
+class TimeTrigger(Trigger):
+    pass
 # Constructor:
 #        Input: Time has to be in EST and in the format of "%d %b %Y %H:%M:%S".
 #        Convert time from string to a datetime before saving it as an attribute.
-
 # Problem 6
 # TODO: BeforeTrigger and AfterTrigger
 
