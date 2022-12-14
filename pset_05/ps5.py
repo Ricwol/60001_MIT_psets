@@ -80,6 +80,10 @@ class NewsStory:
         self._link = link
         self._pubdate = pubdate
 
+    def get_guid(self):
+        """Returns globally unique identifier (guid) of a news story"""
+        return self._guid
+
 
 #======================
 # Triggers
