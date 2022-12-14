@@ -96,6 +96,10 @@ class NewsStory:
         """Returns link to a news story"""
         return self._link
 
+    def get_pubdate(self):
+        """Returns publishing date (pubdate) of a news story"""
+        return self._pubdate
+
 
 #======================
 # Triggers
