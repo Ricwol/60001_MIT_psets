@@ -165,8 +165,20 @@ class EncryptedSubMessage(SubMessage):
         
         Hint: use your function from Part 4A
         '''
-        pass #delete this line and replace with your code here
-    
+        message_text = self.get_message_text()
+        word_list = self.get_valid_words()
+        valid_words = 1
+        for vowels_permutation in get_permutations(VOWELS_LOWER):
+            transpose_dict = self.build_transpose_dict(vowels_permutation)
+            message = self.apply_transpose(transpose_dict)
+            words = message.split()
+            # Cound every valid word in message
+            hits = sum(1 for word in words if is_word(word_list, word))
+            if hits >= valid_words:
+                message_text = message
+                valid_words = hits
+        return message_text
+
 
 if __name__ == '__main__':
 
