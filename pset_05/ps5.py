@@ -151,7 +151,29 @@ class PhraseTrigger(Trigger):
             otherwise
 
         """
-        pass
+        text = text.lower()
+        # Remove any punctuation in text
+        for p in string.punctuation:
+            # Replace leaves text as is if p not in text
+            text = text.replace(p, " ")
+        # Remove all whitespace and separate each word
+        text = text.split()
+        # Split all words in phrase at whitespace
+        phrase = self._phrase.split()
+
+        # Use naive text search
+        is_in = False
+        while len(phrase) <= len(text) and not is_in:
+            is_in = True
+            # Loop through all words in phrase
+            for i, word in enumerate(phrase):
+                # IF the ith word in phrase is not equal to the ith word in
+                # text THEN set is_in to False as no match is found yet.
+                if word != text[i]:
+                    is_in = False
+            # Remove first word in text to repeat search on substring
+            text.pop(0)
+        return is_in
 
 
 # Problem 3
