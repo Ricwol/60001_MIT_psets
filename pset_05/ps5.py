@@ -190,6 +190,8 @@ class TitleTrigger(PhraseTrigger):
 
 # Problem 4
 # TODO: DescriptionTrigger
+class DescriptionTrigger(PhraseTrigger):
+    pass
 
 # TIME TRIGGERS
 
