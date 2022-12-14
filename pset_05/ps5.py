@@ -84,6 +84,10 @@ class NewsStory:
         """Returns globally unique identifier (guid) of a news story"""
         return self._guid
 
+    def get_title(self):
+        """Return title of a news story"""
+        return self._title
+
 
 #======================
 # Triggers
