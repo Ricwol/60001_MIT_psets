@@ -129,7 +129,7 @@ class PhraseTrigger(Trigger):
         phrase : str
             A simple phrase to set a trigger.
         """
-        self._phrase = phrase
+        self._phrase = phrase.lower()
 
     def is_phrase_in(self, text):
         """
