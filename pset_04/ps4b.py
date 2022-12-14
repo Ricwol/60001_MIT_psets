@@ -271,5 +271,9 @@ if __name__ == '__main__':
     print('Actual Output:', ciphertext.decrypt_message())
 
     #TODO: best shift value and unencrypted story 
-    
-    pass #delete this line and replace with your code here
+    story = get_story_string()
+    cipher_story = CiphertextMessage(story)
+    best_shift, decrypted_story = cipher_story.decrypt_message()
+    # print(best_shift, decrypted_story)
+    # best shift value: 12
+    # decrypted story: Jack Florey is a mythical character created on the spur of a moment to help cover an insufficiently planned hack. He has been registered for classes at MIT twice before, but has reportedly never passed aclass. It has been the tradition of the residents of East Campus to become Jack Florey for a few nights each year to educate incoming students in the ways, means, and ethics of hacking.
