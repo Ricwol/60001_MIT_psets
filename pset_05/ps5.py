@@ -85,11 +85,11 @@ class NewsStory:
         return self._guid
 
     def get_title(self):
-        """Return title of a news story"""
+        """Returns title of a news story"""
         return self._title
 
     def get_description(self):
-        """Return description of a news story"""
+        """Returns description of a news story"""
         return self._description
 
     def get_link(self):
