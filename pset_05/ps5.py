@@ -207,6 +207,17 @@ class DescriptionTrigger(PhraseTrigger):
         """
         Returns True if self.phrase is in news story's description, False
         otherwise.
+
+        Parameters
+        ----------
+        story : NewsStory
+            A NewsStory object.
+
+        Returns
+        -------
+        bool
+            Checks if self.phase is in news story's description.
+
         """
         description = story.get_description()
         return self.is_phrase_in(description)
