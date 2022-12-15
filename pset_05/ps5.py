@@ -477,21 +477,21 @@ def read_trigger_config(filename):
     triggers = {}
     triggerlist = []
     for line in lines:
-        trigger_configuration = line.split(",")
-        if trigger_configuration[0] == "ADD":
-            # Add all triggers t to triggerlist
-            for t in trigger_configuration[1:]:
+        trigger_definition = line.split(",")
+        if trigger_definition[0] == "ADD":
+            # Add all trigger to triggerlist
+            for trigger in trigger_definition[1:]:
                 # Assume that t is in triggers
-                triggerlist.append(triggers.get(t))
-        elif trigger_configuration[1] in ("AND", "OR"):
-            t, trig, t1, t2 = trigger_configuration
-            # Assume that t1 and t2 are in triggers
-            t1, t2 = triggers.get(t1), triggers.get(t2)
-            triggers[t] = trigger_collection[trig](t1, t2)
+                triggerlist.append(triggers.get(trigger))
+        elif trigger_definition[1] in ("AND", "OR"):
+            name, trigger, trig1, trig2 = trigger_definition
+            # Assume that trig1 and trig2 are in triggers
+            trig1, trig2 = triggers.get(trig1), triggers.get(trig2)
+            triggers[name] = trigger_collection[trigger](trig1, trig2)
         else:
             # Add new trigger to triggers
-            t, trig, el = trigger_configuration
-            triggers[t] = trigger_collection[trig](el)
+            name, trigger, el = trigger_definition
+            triggers[name] = trigger_collection[trigger](el)
 
     return triggerlist
 
