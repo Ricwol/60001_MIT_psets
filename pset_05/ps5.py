@@ -310,7 +310,20 @@ class AndTrigger(Trigger):
 # Problem 9
 # TODO: OrTrigger
 class OrTrigger(Trigger):
-    pass
+
+    def __init__(self, trigger1, trigger2):
+        """
+        Create an OrTrigger object
+
+        Parameters
+        ----------
+        trigger1 : Trigger
+            A Trigger object.
+        trigger2 : Trigger
+            Another Trigger object.
+        """
+        self.trigger1 = trigger1
+        self.trigger2 = trigger2
 
 
 #======================
