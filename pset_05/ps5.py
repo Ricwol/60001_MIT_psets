@@ -441,7 +441,7 @@ def filter_stories(stories, triggerlist):
 
     filtered_stories = []
     for story in stories:
-        if is_triggered(story, triggerlist):
+        if any(trigger.evaluate(story) for trigger in triggerlist):
             filtered_stories.append(story)
     return filtered_stories
 
