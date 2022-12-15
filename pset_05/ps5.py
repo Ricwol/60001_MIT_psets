@@ -300,6 +300,12 @@ class AndTrigger(Trigger):
         self.trigger1 = trigger1
         self.trigger2 = trigger2
 
+    def evaluate(self, story):
+        """
+        Returns True if both Triggers trigger1 and trigger2 fire.
+        """
+        return self.trigger1.evaluate(story) and self.trigger2.evaluate(story)
+
 
 # Problem 9
 # TODO: OrTrigger
