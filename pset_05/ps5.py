@@ -183,6 +183,17 @@ class TitleTrigger(PhraseTrigger):
     def evaluate(self, story):
         """
         Returns True if self.phrase is in news story's title, False otherwise.
+
+        Parameters
+        ----------
+        story : NewsStory
+            A NewsStory object.
+
+        Returns
+        -------
+        bool
+            Checks if self.phase is in news story's title.
+
         """
         title = story.get_title()
         return self.is_phrase_in(title)
