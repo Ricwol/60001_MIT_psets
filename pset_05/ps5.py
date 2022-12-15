@@ -277,7 +277,18 @@ class NotTrigger(Trigger):
 
     def evaluate(self, story):
         """
-        Returns True if story doesn't trigger Trigger, False otherwise.
+        Returns True if trigger is not fired
+
+        Parameters
+        ----------
+        story : NewsStory
+            A NewsStory object.
+
+        Returns
+        -------
+        bool
+            True if trigger is not fired, False otherwise.
+
         """
         return not self.trigger.evaluate(story)
 
