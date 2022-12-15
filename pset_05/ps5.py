@@ -303,6 +303,17 @@ class AndTrigger(Trigger):
     def evaluate(self, story):
         """
         Returns True if both Triggers trigger1 and trigger2 fire.
+
+        Parameters
+        ----------
+        story : NewsStory
+            A NewsStory object.
+
+        Returns
+        -------
+        bool
+            True if story triggers both trigger1 and trigger2, False otherwise.
+
         """
         return self.trigger1.evaluate(story) and self.trigger2.evaluate(story)
 
@@ -324,6 +335,23 @@ class OrTrigger(Trigger):
         """
         self.trigger1 = trigger1
         self.trigger2 = trigger2
+
+    def evaluate(self, story):
+        """
+        Returns True if at least one Trigger fires.
+
+        Parameters
+        ----------
+        story : NewsStory
+            A NewsStory object.
+
+        Returns
+        -------
+        bool
+            True if story triggers at least one Trigger, False otherwise
+
+        """
+        return self.trigger1.evaluate(story) or self.trigger2.evaluate(story)
 
 
 #======================
