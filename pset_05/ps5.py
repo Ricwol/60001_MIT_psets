@@ -433,12 +433,6 @@ def filter_stories(stories, triggerlist):
     # TODO: Problem 10
     # This is a placeholder
     # (we're just returning all the stories, with no filtering)
-    def is_triggered(story, triggerlist):
-        for trigger in triggerlist:
-            if trigger.evaluate(story):
-                return True
-        return False
-
     filtered_stories = []
     for story in stories:
         if any(trigger.evaluate(story) for trigger in triggerlist):
