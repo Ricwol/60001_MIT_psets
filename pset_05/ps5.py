@@ -244,6 +244,22 @@ class BeforeTrigger(TimeTrigger):
 class AfterTrigger(TimeTrigger):
 
     def evaluate(self, story):
+        """
+        Returns True if publishing date of news story comes after date set for
+        AfterTrigger.
+
+        Parameters
+        ----------
+        story : NewsStory
+            A NewsStory object.
+
+        Returns
+        -------
+        bool
+            Compares publishing date of news story with date set for
+            AfterTrigger.
+
+        """
         pubdate = story.get_pubdate()
         date_string = self.date_string
         try:
@@ -287,7 +303,7 @@ class NotTrigger(Trigger):
         Returns
         -------
         bool
-            True if trigger is not fired, False otherwise.
+            Inverts result of trigger evaluate.
 
         """
         return not self.trigger.evaluate(story)
