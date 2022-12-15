@@ -250,6 +250,22 @@ class TimeTrigger(Trigger):
 class BeforeTrigger(TimeTrigger):
 
     def evaluate(self, story):
+        """
+        Returns True if publishing date of news story comes before date set for
+        BeforeTrigger.
+
+        Parameters
+        ----------
+        story : NewsStory
+            A NewsStory object.
+
+        Returns
+        -------
+        bool
+            Compares publishing date of news story with date set for
+            BeforeTrigger.
+
+        """
         pubdate = story.get_pubdate()
         date_string = self.date_string
         try:
