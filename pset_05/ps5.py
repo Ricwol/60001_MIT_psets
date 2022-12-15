@@ -285,7 +285,20 @@ class NotTrigger(Trigger):
 # Problem 8
 # TODO: AndTrigger
 class AndTrigger(Trigger):
-    pass
+
+    def __init__(self, trigger1, trigger2):
+        """
+        Create an AndTrigger object
+
+        Parameters
+        ----------
+        trigger1 : Trigger
+            A Trigger object.
+        trigger2 : Trigger
+            Another Trigger object.
+        """
+        self.trigger1 = trigger1
+        self.trigger2 = trigger2
 
 
 # Problem 9
