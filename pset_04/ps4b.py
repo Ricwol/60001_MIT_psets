@@ -60,6 +60,7 @@ def get_story_string():
 WORDLIST_FILENAME = 'words.txt'
 
 class Message(object):
+
     def __init__(self, text):
         '''
         Initializes a Message object
@@ -115,7 +116,6 @@ class Message(object):
             shift_dict[uppercase[i]] = uppercase[shifted_i]
         return shift_dict
         
-
     def apply_shift(self, shift):
         '''
         Applies the Caesar Cipher to self.message_text with the input shift.
@@ -138,6 +138,7 @@ class Message(object):
 
 
 class PlaintextMessage(Message):
+
     def __init__(self, text, shift):
         '''
         Initializes a PlaintextMessage object        
@@ -226,15 +227,15 @@ class CiphertextMessage(Message):
         and the decrypted message text using that shift value
         '''
         word_list = self.get_valid_words()
-        max_hits = 0
+        max_real_words = 0
         for s in range(26):
             shift = 26 - s
-            message = self.apply_shift(shift)
-            words = message.split()
-            hits = sum(1 for word in words if is_word(word_list, word))
-            if hits >= max_hits:
-                best_match = (shift, message)
-                max_hits = hits
+            decrypted_message = self.apply_shift(shift)
+            words = decrypted_message.split()
+            real_words = sum(1 for word in words if is_word(word_list, word))
+            if real_words >= max_real_words:
+                best_match = (shift, decrypted_message)
+                max_real_words = real_words
         return best_match
 
 
