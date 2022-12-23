@@ -32,11 +32,11 @@ def get_permutations(sequence):
     permutations = []
     letters_used = set()
     # LOOP through all letters in sequence
-    for letter in sequence:
+    for i, letter in enumerate(sequence):
         # If letter is no duplicate get all permutations
         if letter not in letters_used:
             # Get substring without current letter
-            subsequence = sequence.replace(letter, "", 1)
+            subsequence = sequence[:i] + sequence[i+1:]
             # CHECK all permutations for subsequence without current letter
             for permutation in get_permutations(subsequence):
                 # Append current letter to all permutations of subsequence
