@@ -5,7 +5,7 @@
 2. Decomposition, Functions, String Manipulation
 3. Dictionaries, Functions, Assertions
 4. Recursion, OOP, Python Classes, Testing
-5. OOP and Testing with `unittest`
+5. OOP, Tkinter and Testing with `unittest`
 
 Software used in this course:
 - Python 3.5
