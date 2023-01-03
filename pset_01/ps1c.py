@@ -81,7 +81,7 @@ while high - low > 1:
 # Print results if best saving rate was found for a given starter salary
 # to afford the down payment with 36 months of saving within $100
 if abs(current_savings - portion_down_payment) < epsilon:
-    print("Best saving rate: {}".format(portion_saved))
-    print("Steps in bisection search: {}".format(steps))
+    print("Best saving rate:", portion_saved)
+    print("Steps in bisection search:", steps)
 else:
     print("It is not possible to pay the down payment in three years.")
