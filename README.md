@@ -12,6 +12,6 @@ Software used in this course:
 - Anaconda
 - Spyder IDE
 
-These are my solutions to the psets of the MIT course 6.0001 using only methods taught in that class as a restriction.
+These are my solutions to the psets of the MIT course 6.0001
 
 The assignments can be downloaded from the [MIT OpenCourseWare](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/pages/assignments/) website.
