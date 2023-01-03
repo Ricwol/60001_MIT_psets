@@ -1,9 +1,17 @@
 # 6.0001 Introduction To Computer Science And Programming In Python
 
-My solutions to the problem sets from the MIT course
+### Topics of the Psets
+1. Branching, Iteration and Bisection
+2. Decomposition, Functions, String Manipulation
+3. Dictionaries, Functions, Assertions
+4. Recursion, OOP, Python Classes, Testing
+5. OOP and Testing with `unittest`
 
-The assignments can be downloaded from the 
-[MIT OpenCourseWare](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/pages/assignments/)
-website.
+Software used in this course:
+- Python 3.5
+- Anaconda
+- Spyder IDE
 
-This course uses Python 3.5.6
+These are my solutions to the psets of the MIT course 6.0001 using only methods taught in that class as a restriction.
+
+The assignments can be downloaded from the [MIT OpenCourseWare](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/pages/assignments/) website.
